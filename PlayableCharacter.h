@@ -20,7 +20,7 @@ protected:
 
 private:
 	float _gravity;
-	float _speed;
+	float _speed = 400;
 
 	Vector2f _position;
 

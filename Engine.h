@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "TextureHolder.h"
+#include "Thomas.h"
+#include "Bob.h"
 
 using namespace sf;
 
@@ -8,6 +10,9 @@ class Engine
 {
 private:
 	TextureHolder textureHolder;
+
+	Thomas _thomas;
+	Bob _bob;
 
 	const int TILE_SIZE = 50;
 	const int VERTS_IN_QUAD = 4;

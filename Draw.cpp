@@ -9,6 +9,9 @@ void Engine::draw()
 		_window.setView(_bg_mainView);
 		_window.draw(_backgroundSprite);
 		_window.setView(_mainView);
+
+		_window.draw(_thomas.getSprite());
+		_window.draw(_bob.getSprite());
 	}
 	else
 	{
@@ -18,9 +21,17 @@ void Engine::draw()
 		_window.draw(_backgroundSprite);
 		_window.setView(_leftView);
 
+		// Left View
+		_window.draw(_thomas.getSprite());
+		_window.draw(_bob.getSprite());
+
 		_window.setView(_bg_rightView);
 		_window.draw(_backgroundSprite);
 		_window.setView(_rightView);
+
+		// Right View
+		_window.draw(_thomas.getSprite());
+		_window.draw(_bob.getSprite());
 	}
 
 	_window.setView(_hudView);

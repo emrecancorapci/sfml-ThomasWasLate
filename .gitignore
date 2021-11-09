@@ -39,3 +39,4 @@
 *.vcxproj.user
 .vs/
 Debug/
+*.sln

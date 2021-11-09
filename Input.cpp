@@ -1,8 +1,10 @@
+#include <iostream>
+
 #include "Engine.h"
 
 void Engine::input()
 {
-		Event event;
+	Event event;
 
 	while(_window.pollEvent(event))
 	{
@@ -13,6 +15,10 @@ void Engine::input()
 			{
 				_window.close();
 			}
+			if (Keyboard::isKeyPressed(Keyboard::Return))
+			{
+				_playing = true;
+			}
 			if (Keyboard::isKeyPressed(Keyboard::Q))
 			{
 				_character1 = !_character1;
@@ -22,5 +28,15 @@ void Engine::input()
 				_splitScreen = !_splitScreen;
 			}
 		}
+	}
+
+	if(_thomas.handleInput())
+	{
+		// Jump sound
+	}
+
+	if (_bob.handleInput())
+	{
+		// Jump sound
 	}
 };

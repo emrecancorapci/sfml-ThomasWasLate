@@ -1,5 +1,7 @@
 #include "PlayableCharacter.h"
 
+#include <iostream>
+
 void PlayableCharacter::spawn(Vector2f startPosition, float gravity)
 {
 	_position = startPosition;
@@ -15,7 +17,7 @@ void PlayableCharacter::update(float deltaTime)
 		_position.x += _speed * deltaTime;
 	}
 
-	if (_rightPressed)
+	if (_leftPressed)
 	{
 		_position.x -= _speed * deltaTime;
 	}
@@ -120,6 +122,19 @@ void PlayableCharacter::stopFalling(float position)
 
 void PlayableCharacter::stopRight(float position)
 {
-	
+	_position.x = position - getPosition().height;
+	_sprite.setPosition(_position);
+	_isFalling = false;
 }
 
+void PlayableCharacter::stopLeft(float position)
+{
+	_position.x = position - _sprite.getGlobalBounds().width;
+	_sprite.setPosition(_position);
+}
+
+void PlayableCharacter::stopJump()
+{
+	_isJumping = false;
+	_isFalling = true;
+}
