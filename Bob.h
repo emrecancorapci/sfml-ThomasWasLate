@@ -5,7 +5,7 @@ class Bob : public PlayableCharacter
 {
 public:
 	Bob();
-	bool virtual handleInput() override;
+	virtual bool handleInput() override;
 };
 
 	

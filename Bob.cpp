@@ -28,23 +28,8 @@ bool Bob::handleInput()
 		_isFalling = true;
 	}
 
-	if (Keyboard::isKeyPressed(Keyboard::Left))
-	{
-		_leftPressed = true;
-	}
-	else
-	{
-		_leftPressed = false;
-	}
-
-	if (Keyboard::isKeyPressed(Keyboard::Right))
-	{
-		_rightPressed = true;
-	}
-	else
-	{
-		_rightPressed = false;
-	}
+	_leftPressed = Keyboard::isKeyPressed(Keyboard::Left);
+	_rightPressed = Keyboard::isKeyPressed(Keyboard::Right);
 
 	return _justJumped;
 }

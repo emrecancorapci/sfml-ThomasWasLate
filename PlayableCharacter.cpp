@@ -1,7 +1,5 @@
 #include "PlayableCharacter.h"
 
-#include <iostream>
-
 void PlayableCharacter::spawn(Vector2f startPosition, float gravity)
 {
 	_position = startPosition;
@@ -13,14 +11,10 @@ void PlayableCharacter::update(float deltaTime)
 {
 	// Move
 	if (_rightPressed)
-	{
 		_position.x += _speed * deltaTime;
-	}
 
 	if (_leftPressed)
-	{
 		_position.x -= _speed * deltaTime;
-	}
 
 	// Jump
 	if (_isJumping)
@@ -28,9 +22,7 @@ void PlayableCharacter::update(float deltaTime)
 		_lastJumpTime += deltaTime;
 
 		if (_lastJumpTime < _jumpDuration)
-		{
 			_position.y -= _gravity * 2 * deltaTime;
-		}
 		else
 		{
 			_isJumping = false;

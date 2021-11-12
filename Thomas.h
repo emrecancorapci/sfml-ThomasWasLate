@@ -5,6 +5,6 @@ class Thomas : public PlayableCharacter
 {
 public:
 	Thomas();
-	bool virtual handleInput() override;
+	virtual bool handleInput() override;
 };
 
