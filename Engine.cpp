@@ -42,8 +42,10 @@ Engine::Engine()
 			.001f, 
 			.499f, 
 			.998f));
+
 	_backgroundTexture = TextureHolder::GetTexture("graphics/background.png");
 	_backgroundSprite.setTexture(_backgroundTexture);
+	_textureTiles = TextureHolder::GetTexture("graphics/tiles_sheet.png");
 }
 
 void Engine::run()

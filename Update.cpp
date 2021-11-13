@@ -14,6 +14,8 @@ void Engine::update(float deltaTimeAsSec)
 
 		_timeRemaining = 10;
 		_newLevelRequired = false;
+
+		loadLevel();
 	}
 
 	if(_playing)
@@ -21,6 +23,18 @@ void Engine::update(float deltaTimeAsSec)
 		// Update characters
 		_thomas.update(deltaTimeAsSec);
 		_bob.update(deltaTimeAsSec);
+
+		// Collision Detection
+		if(detectCollisions(_thomas) && detectCollisions(_bob))
+			_newLevelRequired = true;
+		else
+			detectCollisions(_bob);
+
+		// Jump on each other
+		if(_bob.getFeet().intersects(_thomas.getHead()))
+			_bob.stopFalling(_thomas.getHead().top);
+		if(_thomas.getFeet().intersects(_bob.getHead()))
+			_thomas.stopFalling(_bob.getHead().top);
 
 		// Countdown Timer
 		_timeRemaining -= deltaTimeAsSec;

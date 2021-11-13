@@ -9,6 +9,7 @@ void Engine::draw()
 		_window.setView(_bg_mainView);
 		_window.draw(_backgroundSprite);
 		_window.setView(_mainView);
+		_window.draw(_vertexLevel, &_textureTiles);
 
 		_window.draw(_thomas.getSprite());
 		_window.draw(_bob.getSprite());
@@ -16,24 +17,26 @@ void Engine::draw()
 	else
 	{
 		// If split-screen
-
+		// Left View
 		_window.setView(_bg_leftView);
 		_window.draw(_backgroundSprite);
 		_window.setView(_leftView);
+		_window.draw(_vertexLevel, &_textureTiles);
 
-		// Left View
 		_window.draw(_thomas.getSprite());
 		_window.draw(_bob.getSprite());
 
+		// Right View
 		_window.setView(_bg_rightView);
 		_window.draw(_backgroundSprite);
 		_window.setView(_rightView);
+		_window.draw(_vertexLevel, &_textureTiles);
 
-		// Right View
+
 		_window.draw(_thomas.getSprite());
 		_window.draw(_bob.getSprite());
 	}
-
+	// HUD
 	_window.setView(_hudView);
 
 	_window.display();
