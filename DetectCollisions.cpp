@@ -31,9 +31,7 @@ bool Engine::detectCollisions(PlayableCharacter& character)
 		_levelManager.getLevelSize().y * TILE_SIZE);
 
 	if(!character.getPosition().intersects(level))
-	{
 		character.spawn(_levelManager.getStartPosition(), GRAVITY);
-	}
 
 	for (int x = startX; x < endX; x++)
 	{
@@ -61,7 +59,7 @@ bool Engine::detectCollisions(PlayableCharacter& character)
 					}
 				}
 			}
-			if (_arrayLevel[y][x] == ground)
+			if(_arrayLevel[y][x] == ground)
 			{
 				if(character.getRight().intersects(block))
 					character.stopRight(block.left);
@@ -76,6 +74,5 @@ bool Engine::detectCollisions(PlayableCharacter& character)
 				reachedGoal = true;
 		}
 	}
-
 	return reachedGoal;
 }

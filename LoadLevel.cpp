@@ -6,9 +6,7 @@ void Engine::loadLevel()
 
 	// Delete  previous
 	for (int i = 0; i < _levelManager.getLevelSize().y; ++i)
-	{
 		delete[] _arrayLevel[i];
-	}
 
 	_arrayLevel = _levelManager.nextLevel(_vertexLevel);
 	_timeRemaining = _levelManager.getTimeLimit();
