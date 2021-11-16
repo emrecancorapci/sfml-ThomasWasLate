@@ -27,6 +27,7 @@ public:
 
 	void playFire(Vector2f emitterLocation, Vector2f listenerLocation);
 	void playFallInFire();
+	void playFallInWater();
 	void playJump();
 	void playReachGoal();
 };

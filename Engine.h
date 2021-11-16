@@ -4,6 +4,7 @@
 #include "Thomas.h"
 #include "Bob.h"
 #include "LevelManager.h"
+#include "SoundManager.h"
 
 using namespace sf;
 
@@ -18,6 +19,7 @@ private:
 	enum tile_type {air, ground, lava, water, goal};
 
 	LevelManager _levelManager;
+	SoundManager _soundManager;
 
 	const int TILE_SIZE = 50;
 	const int VERTS_IN_QUAD = 4;
@@ -64,6 +66,10 @@ private:
 
 	// Collision Detection
 	bool detectCollisions(PlayableCharacter& character);
+
+	void populateEmitters(vector <Vector2f>& soundEmittersVector, int** arrayLevel);
+
+	vector <Vector2f> _fireEmitters;
 
 public:
 	Engine();

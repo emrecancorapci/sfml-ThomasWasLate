@@ -26,7 +26,10 @@ void Engine::update(float deltaTimeAsSec)
 
 		// Collision Detection
 		if(detectCollisions(_thomas) && detectCollisions(_bob))
+		{
 			_newLevelRequired = true;
+			_soundManager.playReachGoal();
+		}
 		else
 			detectCollisions(_bob);
 
@@ -43,6 +46,8 @@ void Engine::update(float deltaTimeAsSec)
 		if (_timeRemaining <= 0)
 			_newLevelRequired = true;
 	}
+
+	// vector<Vector2f>::iterator it; //512
 
 	if (_splitScreen)
 	{

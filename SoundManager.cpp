@@ -37,16 +37,29 @@ void SoundManager::playFire(Vector2f emitterLocation, Vector2f listenerLocation)
 {
 	Listener::setPosition(listenerLocation.x, listenerLocation.y, 0.0f);
 
+	// Move the source of the sounds
 	switch (_nextSound)
-	{ // 474
+	{
 	case 1:
-		// ...
+		_fireSound1.setPosition(emitterLocation.x, emitterLocation.y, 0.0f);
+		if (_fireSound1.getStatus() == Sound::Status::Stopped)
+		{
+			_fireSound1.play();
+		}
 		break;
 	case 2:
-		// ...
+		_fireSound2.setPosition(emitterLocation.x, emitterLocation.y, 0.0f);
+		if (_fireSound2.getStatus() == Sound::Status::Stopped)
+		{
+			_fireSound2.play();
+		}
 		break;
 	case 3:
-		// ...
+		_fireSound3.setPosition(emitterLocation.x, emitterLocation.y, 0.0f);
+		if (_fireSound3.getStatus() == Sound::Status::Stopped)
+		{
+			_fireSound3.play();
+		}
 		break;
 	}
 
@@ -56,5 +69,29 @@ void SoundManager::playFire(Vector2f emitterLocation, Vector2f listenerLocation)
 	{
 		_nextSound = 1;
 	}
+}
+
+void SoundManager::playFallInFire()
+{
+	_fallInFireSound.setRelativeToListener(true);
+	_fallInFireSound.play();
+}
+
+void SoundManager::playFallInWater()
+{
+	_fallInWaterSound.setRelativeToListener(true);
+	_fallInWaterSound.play();
+}
+
+void SoundManager::playJump()
+{
+	_jumpSound.setRelativeToListener(true);
+	_jumpSound.play();
+}
+
+void SoundManager::playReachGoal()
+{
+	_reachGoalSound.setRelativeToListener(true);
+	_reachGoalSound.play();
 }
 

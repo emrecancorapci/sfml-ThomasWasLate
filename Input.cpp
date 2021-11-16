@@ -32,11 +32,11 @@ void Engine::input()
 
 	if(_thomas.handleInput())
 	{
-		// Jump sound
+		_soundManager.playJump();
 	}
 
 	if (_bob.handleInput())
 	{
-		// Jump sound
+		_soundMManager.playJump();
 	}
 };
