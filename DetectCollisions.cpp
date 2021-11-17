@@ -10,10 +10,10 @@ bool Engine::detectCollisions(PlayableCharacter& character)
 	block.height = TILE_SIZE;
 
 	// Zone around thomas
-	int startX = (int)(detectionZone.left / TILE_SIZE) - 1;
-	int startY = (int)(detectionZone.top / TILE_SIZE) - 1;
-	int endX = (int)(detectionZone.left / TILE_SIZE) + 2;
-	int endY = (int)(detectionZone.top / TILE_SIZE) + 3;
+	int startX = static_cast<int>(detectionZone.left / TILE_SIZE) - 1;
+	int startY = static_cast<int>(detectionZone.top / TILE_SIZE) - 1;
+	int endX = static_cast<int>(detectionZone.left / TILE_SIZE) + 2;
+	int endY = static_cast<int>(detectionZone.top / TILE_SIZE) + 3;
 
 	// Limit below zero
 	startX = startX < 0 ? 0 : startX;                                               
@@ -51,11 +51,11 @@ bool Engine::detectCollisions(PlayableCharacter& character)
 					// Sound
 					if (_arrayLevel[y][x] == lava)
 					{
-						// Lava sound
+						_soundManager.playFallInFire();
 					}
 					else
 					{
-						// Water sound
+						_soundManager.playFallInWater();
 					}
 				}
 			}

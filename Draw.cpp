@@ -38,6 +38,8 @@ void Engine::draw()
 	}
 	// HUD
 	_window.setView(_hudView);
-
+	_window.draw(_hud.getLevel());
+	_window.draw(_hud.getTime());
+	// 491
 	_window.display();
 }

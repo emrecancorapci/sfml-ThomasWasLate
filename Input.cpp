@@ -1,10 +1,8 @@
-#include <iostream>
-
 #include "Engine.h"
 
 void Engine::input()
 {
-	Event event;
+	Event event{};
 
 	while(_window.pollEvent(event))
 	{
@@ -37,6 +35,6 @@ void Engine::input()
 
 	if (_bob.handleInput())
 	{
-		_soundMManager.playJump();
+		_soundManager.playJump();
 	}
 };

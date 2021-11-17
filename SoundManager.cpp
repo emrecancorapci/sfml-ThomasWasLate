@@ -7,13 +7,24 @@ SoundManager::SoundManager()
 {
 	int constexpr SOUND_NUMBER = 7;
 
+	// Load sounds to buffers
 	_fireBuffer.loadFromFile("sound/fire1.wav");
 	_fallInFireBuffer.loadFromFile("sound/fallinfire.wav");
 	_fallInWaterBuffer.loadFromFile("sound/fallinwater.wav");
 	_jumpBuffer.loadFromFile("sound/jump.wav");
 	_reachGoalBuffer.loadFromFile("sound/reachgoal.wav");
 
-	SoundBuffer buffers[SOUND_NUMBER] = {_fireBuffer, _fireBuffer, _fireBuffer,
+	// Assign buffers to sounds
+	_fireSound1.setBuffer(_fireBuffer);
+	_fireSound2.setBuffer(_fireBuffer);
+	_fireSound3.setBuffer(_fireBuffer);
+	_fallInFireSound.setBuffer(_fallInFireBuffer);
+	_fallInWaterSound.setBuffer(_fallInWaterBuffer);
+	_jumpSound.setBuffer(_jumpBuffer);
+	_reachGoalSound.setBuffer(_reachGoalBuffer);
+
+	/*
+	 const SoundBuffer buffers[SOUND_NUMBER] = {_fireBuffer, _fireBuffer, _fireBuffer,
 		_fallInFireBuffer, _fallInWaterBuffer, _jumpBuffer, _reachGoalBuffer};
 
 	Sound sounds[SOUND_NUMBER] = {_fireSound1,_fireSound2,_fireSound3,
@@ -21,16 +32,32 @@ SoundManager::SoundManager()
 
 	for (int x = 0; x < SOUND_NUMBER; x++)
 		sounds[x].setBuffer(buffers[x]);
+	*/
 
-	float minDistance = 150;
-	float attenuation = 15;
+	const float minDistance = 150;
+	const float attenuation = 15;
 
-	for (int x = 0; x < 3; x++)
+	/*
+	 for (int x = 0; x < 3; x++)
 	{
 		sounds[x].setAttenuation(attenuation);
 		sounds[x].setMinDistance(minDistance);
 		sounds[x].setLoop(true);
 	}
+	*/
+
+	_fireSound1.setAttenuation(attenuation);
+	_fireSound1.setMinDistance(minDistance);
+	_fireSound1.setLoop(true);
+	
+	_fireSound2.setAttenuation(attenuation);
+	_fireSound2.setMinDistance(minDistance);
+	_fireSound2.setLoop(true);
+	
+	_fireSound3.setAttenuation(attenuation);
+	_fireSound3.setMinDistance(minDistance);
+	_fireSound3.setLoop(true);
+
 }
 
 void SoundManager::playFire(Vector2f emitterLocation, Vector2f listenerLocation)
@@ -61,6 +88,7 @@ void SoundManager::playFire(Vector2f emitterLocation, Vector2f listenerLocation)
 			_fireSound3.play();
 		}
 		break;
+	default: break;
 	}
 
 	_nextSound++;

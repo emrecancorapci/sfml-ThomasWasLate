@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include <SFML/Graphics.hpp>
 #include <sstream>
+
 using namespace sf;
 
 void Engine::update(float deltaTimeAsSec)
@@ -47,7 +48,24 @@ void Engine::update(float deltaTimeAsSec)
 			_newLevelRequired = true;
 	}
 
-	// vector<Vector2f>::iterator it; //512
+	// Random fire emitters
+	for(auto it = _fireEmitters.begin();
+	    it != _fireEmitters.end(); ++it)
+	{
+		float posX = (*it).x;
+		float posY = (*it).y;
+
+		FloatRect localRect(
+			posX - 250, 
+			posY - 250, 
+			500, 
+			500);
+
+		if (_thomas.getPosition().intersects(localRect))
+		{
+			_soundManager.playFire(Vector2f(posY,posY), _thomas.getCenter());
+		}
+	}
 
 	if (_splitScreen)
 	{
@@ -61,5 +79,20 @@ void Engine::update(float deltaTimeAsSec)
 			_mainView.setCenter(_thomas.getCenter());
 		else
 			_mainView.setCenter(_bob.getCenter());
+	}
+
+	_frameSinceLastHUDUpdate++;
+	if (_frameSinceLastHUDUpdate > _targetFramePerHUDUpdate)
+	{
+		stringstream time;
+		stringstream level;
+
+		time << static_cast<int>(_timeRemaining);
+		_hud.setTime(time.str());
+
+		level << "Level:" << _levelManager.getCurrentLevel();
+		_hud.setLevel(level.str());
+
+		_frameSinceLastHUDUpdate = 0;
 	}
 }
