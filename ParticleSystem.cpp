@@ -19,7 +19,45 @@ void ParticleSystem::init(int count)
 
 		direction = Vector2f(cos(angle) * speed, sin(angle) * speed);
 
-		_particles.push_back(Particle(direction));
-	} // 532
-
+		_particles.emplace_back(direction);
+	}
 }
+
+void ParticleSystem::update(float deltaTime)
+{
+	_duration -= deltaTime;
+	int currentVertex = 0;
+
+	for(auto i = _particles.begin(); i!=_particles.end(); ++i)
+	{
+		i->update(deltaTime);
+		_vertices[currentVertex++].position = i->getPosition();
+	}
+
+	if (_duration < 0) _isRunning = false;
+}
+
+void ParticleSystem::emitParticles(Vector2f position)
+{
+	_isRunning = true;
+	_duration = 2;
+
+	int currentVertex = 0;
+
+	for(auto it = _particles.begin(); it != _particles.end(); ++it)
+	{
+		_vertices[currentVertex++].color = Color::Yellow;
+		it->setPosition(position);
+	}
+}
+
+void ParticleSystem::draw(RenderTarget& target, RenderStates states) const
+{
+	target.draw(_vertices,states);
+}
+
+bool ParticleSystem::running()
+{
+	return _isRunning;
+}
+

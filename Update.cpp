@@ -95,4 +95,9 @@ void Engine::update(float deltaTimeAsSec)
 
 		_frameSinceLastHUDUpdate = 0;
 	}
+
+	if (_particleSystem.running())
+	{
+		_particleSystem.update(deltaTimeAsSec);
+	}
 }

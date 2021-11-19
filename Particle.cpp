@@ -10,7 +10,7 @@ void Particle::update(float deltaTimeAsSec)
 void Particle::setPosition(Vector2f position)
 {
 	_position = position;
-};
+}
 
 Vector2f Particle::getPosition()
 {

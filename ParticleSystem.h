@@ -18,7 +18,7 @@ public:
 
 	void init(int count);
 	void emitParticles(Vector2f position);
-	void update(float elapsedTime);
+	void update(float deltaTime);
 
 	bool running();
 	

@@ -58,6 +58,10 @@ bool Engine::detectCollisions(PlayableCharacter& character)
 						_soundManager.playFallInWater();
 					}
 				}
+
+				// Particles
+				if(character.getFeet().intersects(block))
+					_particleSystem.emitParticles(character.getCenter());
 			}
 			if(_arrayLevel[y][x] == ground)
 			{
@@ -70,6 +74,9 @@ bool Engine::detectCollisions(PlayableCharacter& character)
 				else if(character.getHead().intersects(block))
 					character.stopJump();
 			}
+
+
+
 			if(_arrayLevel[y][x] == goal)
 				reachedGoal = true;
 		}

@@ -13,6 +13,11 @@ void Engine::draw()
 
 		_window.draw(_thomas.getSprite());
 		_window.draw(_bob.getSprite());
+
+		if (_particleSystem.running())
+		{
+			_window.draw(_particleSystem);
+		}
 	}
 	else
 	{
@@ -26,6 +31,11 @@ void Engine::draw()
 		_window.draw(_thomas.getSprite());
 		_window.draw(_bob.getSprite());
 
+		if (_particleSystem.running())
+		{
+			_window.draw(_particleSystem);
+		}
+
 		// Right View
 		_window.setView(_bg_rightView);
 		_window.draw(_backgroundSprite);
@@ -35,11 +45,17 @@ void Engine::draw()
 
 		_window.draw(_thomas.getSprite());
 		_window.draw(_bob.getSprite());
+
+		if (_particleSystem.running())
+		{
+			_window.draw(_particleSystem);
+		}
 	}
+
 	// HUD
 	_window.setView(_hudView);
 	_window.draw(_hud.getLevel());
 	_window.draw(_hud.getTime());
-	// 491
+
 	_window.display();
 }

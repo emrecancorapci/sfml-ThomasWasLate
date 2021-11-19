@@ -6,6 +6,7 @@
 #include "LevelManager.h"
 #include "SoundManager.h"
 #include "Hud.h"
+#include "ParticleSystem.h"
 
 using namespace sf;
 
@@ -22,6 +23,7 @@ private:
 	LevelManager _levelManager;
 	SoundManager _soundManager;
 	Hud _hud;
+	ParticleSystem _particleSystem;
 
 	const int TILE_SIZE = 50;
 	const int VERTS_IN_QUAD = 4;
