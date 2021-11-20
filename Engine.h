@@ -47,6 +47,7 @@ private:
 	// Sprite and Texture
 	Sprite _backgroundSprite;
 	Texture _backgroundTexture;
+	Shader _rippleShader;
 
 	// View settings
 	bool _playing = false;

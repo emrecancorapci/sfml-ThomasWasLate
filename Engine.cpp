@@ -48,6 +48,20 @@ Engine::Engine()
 	_textureTiles = TextureHolder::GetTexture("graphics/tiles_sheet.png");
 
 	_particleSystem.init(1000);
+
+	// Shader
+
+	if(!sf::Shader::isAvailable())
+	{
+		// This is not a PC. This is a potato.
+		_window.close();
+	}
+	else
+	{
+		_rippleShader.loadFromFile("shaders/vertShader.vert",
+			"shaders/rippleShader.frag");
+	}
+
 }
 
 void Engine::run()
